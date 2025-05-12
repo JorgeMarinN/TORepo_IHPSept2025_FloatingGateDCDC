@@ -1,0 +1,7 @@
+** sch_path: /home/designer/shared/IHP/Trabajo_Ac3e_Ayudantia_Inv/Rediseno/2NmosSch.sch
+.subckt 2NmosSch Vout G1 G2 Vdd GND
+*.PININFO Vout:B G1:B G2:B Vdd:B GND:B
+XM2 Vout G2 GND net1 sg13_hv_nmos l=0.45u w=10u ng=1 m=4080
+XM1 Vdd G1 Vout net2 sg13_hv_nmos l=0.45u w=10u ng=1 m=4080
+.ends
+.end
