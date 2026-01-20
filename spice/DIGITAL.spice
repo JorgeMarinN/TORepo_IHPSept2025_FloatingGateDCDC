@@ -1,0 +1,19 @@
+** sch_path: /home/wsl_rks/Designs/redesign_Floating_Gate_Driver_2025/ALL_Floating_Gate/Floating_Gate/DIGITAL.sch
+.include "/home/wsl_rks/pdk/ihp-sg13g2/ihp-sg13g2/libs.ref/sg13g2_stdcell/cdl/sg13g2_stdcell.cdl"
+.subckt DIGITAL IN VDD VSS vfe vre
+*.PININFO IN:B VDD:B VSS:B vfe:B vre:B
+x1 net3 IN VDD VSS sg13g2_inv_1
+x2 net1 net3 VDD VSS sg13g2_inv_1
+x3 net5 net1 VDD VSS sg13g2_inv_1
+x5 net4 net5 VDD VSS sg13g2_inv_1
+x6 net2 net4 VDD VSS sg13g2_inv_1
+x8 vre net2 net1 VDD VSS sg13g2_and2_1
+x4 net6 net1 VDD VSS sg13g2_inv_1
+x7 vfe net6 net4 VDD VSS sg13g2_and2_1
+**** begin user architecture code
+
+
+
+**** end user architecture code
+.ends
+.end

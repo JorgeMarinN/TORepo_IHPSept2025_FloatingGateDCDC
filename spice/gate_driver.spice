@@ -1,0 +1,15 @@
+** sch_path: /home/wsl_rks/Designs/redesign_Floating_Gate_Driver_2025/ALL_Floating_Gate/Sch/gate_driver.sch
+.subckt gate_driver VH Vdd Vs Vg GND IGND
+*.PININFO VH:B Vdd:B Vs:I Vg:O GND:B IGND:B
+MD9 VgMD2 Vs Vdd Vdd sg13_lv_pmos w=1.12u l=0.13u ng=1 m=2
+MD10 GND Vs VgMD2 GND sg13_lv_nmos w=1.12u l=0.13u ng=1 m=2
+MD1 VgMD5 VgMD1 VH VH sg13_hv_pmos w=10u l=0.4u ng=1 m=1
+MD3 VgMD1 VgMD5 VH VH sg13_hv_pmos w=10u l=0.4u ng=1 m=1
+MD5 VgMD78 VgMD5 VH VH sg13_hv_pmos w=10u l=0.4u ng=1 m=30
+MD7 Vg VgMD78 VH VH sg13_hv_pmos w=10u l=0.4u ng=1 m=250
+MD2 IGND VgMD2 VgMD5 IGND sg13_hv_nmos w=10u l=0.45u ng=1 m=6
+MD4 IGND Vs VgMD1 IGND sg13_hv_nmos w=10u l=0.45u ng=1 m=6
+MD6 IGND Vs VgMD78 IGND sg13_hv_nmos w=10u l=0.45u ng=1 m=25
+MD8 IGND VgMD78 Vg IGND sg13_hv_nmos w=10u l=0.45u ng=1 m=200
+.ends
+.end

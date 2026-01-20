@@ -1,0 +1,7 @@
+** sch_path: /home/wsl_rks/Designs/redesign_Floating_Gate_Driver_2025/ALL_Floating_Gate/Sch/Two_Nmos.sch
+.subckt Two_Nmos Vout G1 G2 Vdd GND
+*.PININFO Vout:B G1:B G2:B Vdd:B GND:B
+M2 GND G2 Vout GND sg13_hv_nmos w=10u l=0.45u ng=1 m=4080
+M1 Vout G1 Vdd Vout sg13_hv_nmos w=10u l=0.45u ng=1 m=4080
+.ends
+.end

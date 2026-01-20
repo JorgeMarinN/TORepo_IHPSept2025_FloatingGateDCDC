@@ -1,0 +1,17 @@
+** sch_path: /home/wsl_rks/Designs/redesign_Floating_Gate_Driver_2025/ALL_Floating_Gate/Sch/Full_Layout_1.sch
+.subckt Full_Layout_1 Vout G1 G2 Vdd GND VH Vddls Vs
+*.PININFO Vout:B G1:B G2:B Vdd:B GND:B VH:B Vddls:B Vs:B
+M2 GND G2 Vout GND sg13_hv_nmos w=10u l=0.45u ng=1 m=4080
+M1 Vout G1 Vdd Vout sg13_hv_nmos w=10u l=0.45u ng=1 m=4080
+MD9 VgMD2 Vs Vddls Vddls sg13_lv_pmos w=1.12u l=0.13u ng=1 m=2
+MD10 GND Vs VgMD2 GND sg13_lv_nmos w=1.12u l=0.13u ng=1 m=2
+MD1 VgMD5 VgMD1 VH VH sg13_hv_pmos w=10u l=0.4u ng=1 m=1
+MD3 VgMD1 VgMD5 VH VH sg13_hv_pmos w=10u l=0.4u ng=1 m=1
+MD5 VgMD78 VgMD5 VH VH sg13_hv_pmos w=10u l=0.4u ng=1 m=30
+MD7 G2 VgMD78 VH VH sg13_hv_pmos w=10u l=0.4u ng=1 m=250
+MD2 GND VgMD2 VgMD5 GND sg13_hv_nmos w=10u l=0.45u ng=1 m=6
+MD4 GND Vs VgMD1 GND sg13_hv_nmos w=10u l=0.45u ng=1 m=6
+MD6 GND Vs VgMD78 GND sg13_hv_nmos w=10u l=0.45u ng=1 m=25
+MD8 GND VgMD78 G2 GND sg13_hv_nmos w=10u l=0.45u ng=1 m=200
+.ends
+.end

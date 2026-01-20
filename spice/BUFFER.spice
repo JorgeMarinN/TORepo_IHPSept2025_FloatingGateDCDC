@@ -1,0 +1,11 @@
+** sch_path: /home/wsl_rks/Designs/redesign_Floating_Gate_Driver_2025/ALL_Floating_Gate/Floating_Gate/BUFFER.sch
+.subckt BUFFER Q QN
+*.PININFO Q:B QN:B
+M13 net1 net2 Vboot Vboot sg13_hv_pmos w=1u l=0.5u ng=1 m=1
+M14 net2 net1 Vboot Vboot sg13_hv_pmos w=3u l=0.5u ng=1 m=1
+M15 TRIG net2 Vboot Vboot sg13_hv_pmos w=195u l=0.5u ng=65 m=1
+M16 vsource Q net1 vsource sg13_hv_nmos w=3u l=0.5u ng=1 m=1
+M17 vsource QN net2 vsource sg13_hv_nmos w=3u l=0.5u ng=1 m=1
+M18 vsource net2 TRIG vsource sg13_hv_nmos w=72u l=0.5u ng=24 m=1
+.ends
+.end

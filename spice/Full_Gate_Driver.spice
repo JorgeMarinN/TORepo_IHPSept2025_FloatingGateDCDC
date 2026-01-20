@@ -1,0 +1,51 @@
+** sch_path: /home/wsl_rks/Designs/redesign_Floating_Gate_Driver_2025/ALL_Floating_Gate/Sch/Final_SCH/Full_Gate_Driver.sch
+.include "/home/wsl_rks/pdk/ihp-sg13g2/ihp-sg13g2/libs.ref/sg13g2_stdcell/cdl/sg13g2_stdcell.cdl"
+.subckt FULL_FLOATING_GATE
+.global VDD VSS
+
+
+M1 RESET SET Vboot Vboot sg13_hv_pmos w=5u l=1u ng=1 m=1
+M2 SET SET Vboot Vboot sg13_hv_pmos w=0.5u l=1u ng=1 m=1
+M3 SET RESET Vboot Vboot sg13_hv_pmos w=5u l=1u ng=1 m=1
+M4 RESET RESET Vboot Vboot sg13_hv_pmos w=0.5u l=1u ng=1 m=1
+M5 net1 RESET Vboot Vboot sg13_hv_pmos w=1u l=0.5u ng=1 m=1
+M6 SET SET net1 net1 sg13_hv_pmos w=1u l=0.5u ng=1 m=1
+M7 net2 SET Vboot Vboot sg13_hv_pmos w=1u l=0.5u ng=1 m=1
+M8 RESET RESET net2 net2 sg13_hv_pmos w=1u l=0.5u ng=1 m=1
+M9 net5 VRE SET VSS sg13_hv_nmos w=30u l=0.5u ng=5 m=1
+M10 net5 VFE RESET VSS sg13_hv_nmos w=30u l=0.5u ng=5 m=1
+M11 VSS VBAT VBAT VSS sg13_hv_nmos w=200u l=2u ng=20 m=1
+M12 VSS VBAT net5 VSS sg13_hv_nmos w=200u l=2u ng=20 m=1
+M13 net3 net4 Vboot Vboot sg13_hv_pmos w=1u l=0.5u ng=1 m=1
+M14 net4 net3 Vboot Vboot sg13_hv_pmos w=3u l=0.5u ng=1 m=1
+M15 TRIG net4 Vboot Vboot sg13_hv_pmos w=195u l=0.5u ng=65 m=1
+M16 vsource Q net3 vsource sg13_hv_nmos w=3u l=0.5u ng=1 m=1
+M17 vsource QN net4 vsource sg13_hv_nmos w=3u l=0.5u ng=1 m=1
+M18 vsource net4 TRIG vsource sg13_hv_nmos w=72u l=0.5u ng=24 m=1
+M20 Q RESET Vboot Vboot sg13_hv_pmos w=5u l=3u ng=10 m=1
+M21 Q QN Vboot Vboot sg13_hv_pmos w=5u l=3u ng=10 m=1
+M22 net10 RESET Q vsource sg13_hv_nmos w=5u l=3u ng=10 m=1
+M23 vsource QN net10 vsource sg13_hv_nmos w=5u l=3u ng=10 m=1
+M24 QN Q Vboot Vboot sg13_hv_pmos w=5u l=3u ng=10 m=1
+M25 QN SET Vboot Vboot sg13_hv_pmos w=5u l=3u ng=10 m=1
+M26 net11 Q QN vsource sg13_hv_nmos w=5u l=3u ng=10 m=1
+M27 vsource SET net11 vsource sg13_hv_nmos w=5u l=3u ng=10 m=1
+x1 net7 IN VDD VSS sg13g2_inv_1
+x2 predly net7 VDD VSS sg13g2_inv_1
+x3 net8 predly VDD VSS sg13g2_inv_1
+x4 net9 predly VDD VSS sg13g2_inv_1
+x5 dly8 net8 VDD VSS sg13g2_inv_1
+x6 net6 dly8 VDD VSS sg13g2_inv_1
+x7 VFE net9 dly8 VDD VSS sg13g2_and2_1
+x8 VRE net6 predly VDD VSS sg13g2_and2_1
+C2 dly8 VSS cap_cmim w=80.0e-6 l=40.0e-6 m=3
+C1 Vboot vsource cap_cmim w=100.0e-6 l=42.0e-6 m=56
+M28 Vboot Vboot VBAT Vboot sg13_hv_pmos w=6u l=0.5u ng=1 m=1
+**** begin user architecture code
+
+
+
+
+**** end user architecture code
+.ends
+.end

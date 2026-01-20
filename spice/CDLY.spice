@@ -1,0 +1,7 @@
+** sch_path: /home/wsl_rks/Designs/redesign_Floating_Gate_Driver_2025/ALL_Floating_Gate/Floating_Gate/CDLY.sch
+.subckt CDLY
+
+C2 dly8 GND cap_cmim w=80.0e-6 l=40.0e-6 m=3
+.ends
+.GLOBAL GND
+.end

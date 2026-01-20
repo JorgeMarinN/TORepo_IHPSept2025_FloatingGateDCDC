@@ -1,0 +1,19 @@
+** sch_path: /home/wsl_rks/Designs/redesign_Floating_Gate_Driver_2025/ALL_Floating_Gate/Floating_Gate/LevelSHifting.sch
+.subckt LevelSHifting
+
+M1 RESET SET Vboot Vboot sg13_hv_pmos w=5u l=1u ng=1 m=1
+M2 SET SET Vboot Vboot sg13_hv_pmos w=0.5u l=1u ng=1 m=1
+M3 SET RESET Vboot Vboot sg13_hv_pmos w=5u l=1u ng=1 m=1
+M4 RESET RESET Vboot Vboot sg13_hv_pmos w=0.5u l=1u ng=1 m=1
+M5 net1 RESET Vboot Vboot sg13_hv_pmos w=1u l=0.5u ng=1 m=1
+M6 SET SET net1 net1 sg13_hv_pmos w=1u l=0.5u ng=1 m=1
+M7 net2 SET Vboot Vboot sg13_hv_pmos w=1u l=0.5u ng=1 m=1
+M8 RESET RESET net2 net2 sg13_hv_pmos w=1u l=0.5u ng=1 m=1
+M9 net3 VRE SET GND sg13_hv_nmos w=30u l=0.5u ng=5 m=1
+M10 net3 VFE RESET GND sg13_hv_nmos w=30u l=0.5u ng=5 m=1
+M11 GND VBAT VBAT GND sg13_hv_nmos w=200u l=2u ng=20 m=1
+M12 GND VBAT net3 GND sg13_hv_nmos w=200u l=2u ng=20 m=1
+M28 Vboot Vboot VBAT Vboot sg13_hv_pmos w=6u l=0.5u ng=1 m=1
+C1 Vboot vsource cap_cmim w=100.0e-6 l=42.0e-6 m=56
+.ends
+.end

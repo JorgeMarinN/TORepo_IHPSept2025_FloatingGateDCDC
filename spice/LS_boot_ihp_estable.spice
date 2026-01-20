@@ -1,0 +1,83 @@
+** sch_path: /home/wsl_rks/Designs/redesign_Floating_Gate_Driver_2025/ALL_Floating_Gate/Sch/Floating_gate_driver/LS_boot_ihp_estable.sch
+.subckt LS_boot_ihp_estable
+
+I0 VBAT net7 50u
+V4 net10 GND PULSE(0 {VL} 15n 1n 1n 50n 100n)
+V1 VBAT GND {VM}
+V2 net6 GND {VH}
+R38 GND vsource {RL} m=1
+M1 RESET SET Vboot Vboot sg13_hv_pmos w=5u l=1u ng=1 m=1
+M2 SET SET Vboot Vboot sg13_hv_pmos w=0.5u l=1u ng=1 m=1
+M3 SET RESET Vboot Vboot sg13_hv_pmos w=5u l=1u ng=1 m=1
+M4 RESET RESET Vboot Vboot sg13_hv_pmos w=0.5u l=1u ng=1 m=1
+M5 net1 RESET Vboot Vboot sg13_hv_pmos w=1u l=0.5u ng=1 m=1
+M6 SET SET net1 net1 sg13_hv_pmos w=1u l=0.5u ng=1 m=1
+M7 net3 SET Vboot Vboot sg13_hv_pmos w=1u l=0.5u ng=1 m=1
+M8 RESET RESET net3 net3 sg13_hv_pmos w=1u l=0.5u ng=1 m=1
+M9 net2 VRE SET net2 sg13_hv_nmos w=6u l=0.5u ng=1 m=5
+M10 net2 VFE RESET net2 sg13_hv_nmos w=6u l=0.5u ng=1 m=5
+M11 GND net7 net7 GND sg13_hv_nmos w=10u l=2u ng=1 m=20
+M12 GND net7 net2 GND sg13_hv_nmos w=10u l=2u ng=1 m=20
+M13 net4 net5 Vboot Vboot sg13_hv_pmos w=1u l=0.5u ng=1 m=1
+M14 net5 net4 Vboot Vboot sg13_hv_pmos w=3u l=0.5u ng=1 m=1
+M15 TRIG net5 Vboot Vboot sg13_hv_pmos w=3u l=0.5u ng=1 m=65
+M16 vsource Q net4 vsource sg13_hv_nmos w=3u l=0.5u ng=1 m=1
+M17 vsource QN net5 vsource sg13_hv_nmos w=3u l=0.5u ng=1 m=1
+M18 vsource net5 TRIG vsource sg13_hv_nmos w=3u l=0.5u ng=1 m=24
+M19 vsource TRIG net6 vsource sg13_hv_nmos w=4.38u l=0.5u ng=1 m=2520
+M20 Q RESET Vboot Vboot sg13_hv_pmos w=0.5u l=3u ng=1 m=10
+M21 Q QN Vboot Vboot sg13_hv_pmos w=0.5u l=3u ng=1 m=10
+M22 net13 RESET Q vsource sg13_hv_nmos w=0.5u l=3u ng=1 m=10
+M23 vsource QN net13 vsource sg13_hv_nmos w=0.5u l=3u ng=1 m=10
+M24 QN Q Vboot Vboot sg13_hv_pmos w=0.5u l=3u ng=1 m=10
+M25 QN SET Vboot Vboot sg13_hv_pmos w=0.5u l=3u ng=1 m=10
+M26 net14 Q QN vsource sg13_hv_nmos w=0.5u l=3u ng=1 m=10
+M27 vsource SET net14 vsource sg13_hv_nmos w=0.5u l=3u ng=1 m=10
+x1 net9 net10 VDD VSS sg13g2_inv_1
+x2 predly net9 VDD VSS sg13g2_inv_1
+x3 net11 predly VDD VSS sg13g2_inv_1
+x4 net12 predly VDD VSS sg13g2_inv_1
+x5 dly8 net11 VDD VSS sg13g2_inv_1
+x6 net8 dly8 VDD VSS sg13g2_inv_1
+x7 VFE net12 dly8 VDD VSS sg13g2_and2_1
+x8 VRE net8 predly VDD VSS sg13g2_and2_1
+C2 dly8 GND cap_cmim w=80.0e-6 l=40.0e-6 m=3
+C1 Vboot vsource cap_cmim w=100.0e-6 l=42.0e-6 m=56
+M28 VBAT VBAT Vboot VBAT sg13_hv_nmos w=6u l=0.5u ng=1 m=5
+**** begin user architecture code
+
+
+VDD VDD GND 1.8
+VSS VSS GND 0
+.param VH = 10
+.param VM = 5
+.param VL = 1.8
+.param RL = 50
+
+.option abstol=1e-10
+.option method=gear
+
+.options savecurrents
+.control
+*reltol=0.1
+save all
+tran 300n 3000n
+plot V(vboot)
+
+*wrdata /foss/designs/Joel/LS_boot_ajustado_sky/datos.txt tran.v(net11) tran.v(vsource) tran.v(TRIG)
+.endc
+
+
+
+
+.lib cornerMOSlv.lib mos_tt
+.lib cornerMOShv.lib mos_tt
+.lib cornerCAP.lib cap_typ
+.include sg13g2_stdcell.spice
+.include diodes.lib
+
+
+**** end user architecture code
+.ends
+.GLOBAL GND
+.end

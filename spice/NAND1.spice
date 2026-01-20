@@ -1,0 +1,9 @@
+** sch_path: /home/wsl_rks/Designs/redesign_Floating_Gate_Driver_2025/ALL_Floating_Gate/Floating_Gate/NAND1.sch
+.subckt NAND1 QN RESET vBOOT vsource Q
+*.PININFO QN:B RESET:B vBOOT:B vsource:B Q:B
+M20 Q RESET vBOOT vBOOT sg13_hv_pmos w=5u l=3u ng=10 m=1
+M21 Q QN vBOOT vBOOT sg13_hv_pmos w=5u l=3u ng=10 m=1
+M22 Q RESET net1 vsource sg13_hv_nmos w=5u l=3u ng=10 m=1
+M23 net1 QN vsource vsource sg13_hv_nmos w=5u l=3u ng=10 m=1
+.ends
+.end
